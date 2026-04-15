@@ -1,79 +1,77 @@
-
-import './App.css'  
+import './App.css'
 import { useState } from "react";
 import ChatWindow from "./components/ChatWindow";
 import ChatInput from "./components/ChatInput";
-//import axios from "axios";
 
-
-// Estado Global
 function App() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-
-  //prueba mock -------------------------
-const generateFakeAI = (input) => {
-  const text = input.toLowerCase();
-
-  if (text.includes("hola")) return "Hola! 👋 ¿En qué puedo ayudarte?";
-  if (text.includes("envio")) return "Hacemos envíos a todo el país 🚚";
-  if (text.includes("precio")) return "Los precios varían según el producto 💰";
-  if (text.includes("vinilo")) return "Te recomiendo el vinilo de Nirvana 🔥";
-  if (text.includes("figura")) return "Tenemos figuras retro en excelente estado 👌";
-
-  return "Puedo ayudarte con productos, envíos o recomendaciones 😊";
-};
-
-// ---------------------------------------------
-
-
-  /*const sendMessage = async (text) => {
+  const sendMessage = async (text) => {
     const newMessages = [...messages, { role: "user", content: text }];
     setMessages(newMessages);
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:3001/chat", {
-        message: text,
-        history: newMessages,
+      const res = await fetch("http://localhost:3001/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text, history: newMessages }),
       });
-      
-      setLoading(false);
-      setMessages([...newMessages, { role: "assistant", content: res.data.reply }]);
+      const data = await res.json();
+      setMessages([...newMessages, { role: "assistant", content: data.reply }]);
     } catch {
-        setLoading(false);
       setMessages([...newMessages, { role: "assistant", content: "Error 😢" }]);
+    } finally {
+      setLoading(false);
     }
-  };*/
-
-// Pruebaaaa ---------------------------
-const sendMessage = async (text) => {
-  const newMessages = [...messages, { role: "user", content: text }];
-  setMessages(newMessages);
-  setLoading(true);
-
-  setTimeout(() => {
-    const fakeReply = generateFakeAI(text);
-
-    setMessages([
-      ...newMessages,
-      { role: "assistant", content: fakeReply }
-    ]);
-    setLoading(false);
-  }, 1200);
-};
-
-// ------------------------
-
+  };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-600 text-white w-1/2 m-auto rounded-xl">
-      <ChatWindow messages={messages} loading={loading} />
-      <ChatInput sendMessage={sendMessage} />
+    <div className="fixed bottom-6 right-6 flex flex-col items-end gap-3 z-50">
+
+      {/* Panel de Chat */}
+      {isOpen && (
+        <div className="chat-panel w-80 sm:w-96 h-[520px] flex flex-col rounded-2xl overflow-hidden border border-amber-500/30 bg-zinc-900 shadow-2xl shadow-black/50">
+
+          {/* Header */}
+          <div className="flex items-center gap-3 px-4 py-3 bg-zinc-800 border-b border-amber-500/20 shrink-0">
+            <div className="relative shrink-0">
+              <div className="w-9 h-9 rounded-full bg-amber-500 flex items-center justify-center text-zinc-900 font-bold text-xs select-none">
+                BOT
+              </div>
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-zinc-800"></span>
+            </div>
+            <div className="flex flex-col">
+              <p className="text-white font-semibold text-sm leading-none">RetroBot</p>
+              <p className="text-green-400 text-xs font-mono mt-0.5">● en línea</p>
+            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="ml-auto text-zinc-400 hover:text-white transition-colors text-lg leading-none w-7 h-7 flex items-center justify-center rounded-lg hover:bg-zinc-700"
+            >
+              ✕
+            </button>
+          </div>
+
+          <ChatWindow messages={messages} loading={loading} />
+          <ChatInput sendMessage={sendMessage} />
+        </div>
+      )}
+
+      {/* Botón flotante */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Cerrar chat" : "Abrir chat"}
+        className="relative w-14 h-14 rounded-full bg-amber-500 hover:bg-amber-400 active:scale-95 flex items-center justify-center shadow-lg shadow-amber-500/30 transition-all duration-200"
+      >
+        {!isOpen && <span className="pulse-ring absolute inset-0 rounded-full"></span>}
+        <span className="text-2xl select-none" role="img" aria-label="robot">
+          {isOpen ? "✕" : "🤖"}
+        </span>
+      </button>
     </div>
   );
 }
 
 export default App;
-  
-

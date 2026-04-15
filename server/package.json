@@ -1,8 +1,16 @@
 {
+	"name": "server",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+	"dev": "node --watch index.js"
+	},
 	"dependencies": {
-		"express": "^5.2.1",
+		"@google/genai": "^1.50.0",
+		"@google/generative-ai": "^0.24.1",
 		"cors": "^2.8.6",
 		"dotenv": "^17.4.1",
-		"@google/generative-ai": "^0.24.1"
+		"express": "^5.2.1"
 	}
 }
