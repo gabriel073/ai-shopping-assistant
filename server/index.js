@@ -9,7 +9,12 @@ const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://tu-app.vercel.app"  // reemplazás con tu URL de Vercel del front
+  ]
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -46,15 +51,13 @@ Reglas:
 Respuesta:
 `;
 
-    // ✅ Sintaxis correcta para @google/genai v1.x
+   
     const result = await genAI.models.generateContent({
      model: "gemini-2.5-flash",
       contents: prompt,
     });
-
-    const reply = result.text; // ✅ propiedad, no método
-
-    res.json({ reply });
+    
+  res.json({ reply: result.text });
 
   } catch (error) {
     console.error("ERROR GEMINI:", error);
@@ -62,6 +65,5 @@ Respuesta:
   }
 });
 
-app.listen(3001, () => {
-  console.log("Servidor en http://localhost:3001");
-});
+// ✅ Exportar para Vercel (sin app.listen)
+export default app;
