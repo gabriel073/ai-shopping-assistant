@@ -12,7 +12,8 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://tu-app.vercel.app"  // reemplazás con tu URL de Vercel del front
+    "ai-shopping-assistant-mq96.vercel.app",
+      /\.vercel\.app$/  // ✅ acepta cualquier subdominio de vercel.app
   ]
 }));
 app.use(express.json());
@@ -56,7 +57,7 @@ Respuesta:
      model: "gemini-2.5-flash",
       contents: prompt,
     });
-    
+
   res.json({ reply: result.text });
 
   } catch (error) {
