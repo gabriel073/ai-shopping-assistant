@@ -13,7 +13,7 @@ function App() {
     setMessages(newMessages);
     setLoading(true);
     try {
-      const res = await fetch("https://ai-shopping-assistant-beta.vercel.app/", {
+      const res = await fetch("https://ai-shopping-assistant-beta.vercel.app/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, history: newMessages }),
