@@ -63,10 +63,10 @@ function App() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Cerrar chat" : "Abrir chat"}
-        className="relative w-14 h-14 rounded-full bg-amber-500 hover:bg-amber-400 active:scale-95 flex items-center justify-center shadow-lg shadow-amber-500/30 transition-all duration-200"
+        className="relative w-14 h-14 rounded-full bg-amber-500 hover:bg-amber-400 active:scale-95 flex items-center justify-center shadow-lg shadow-amber-500/30 transition-all duration-200 cursor-pointer"
       >
-        {!isOpen && <span className="pulse-ring absolute inset-0 rounded-full"></span>}
-        <span className="text-2xl select-none" role="img" aria-label="robot">
+        {!isOpen && <span className="pulse-ring absolute inset-0 rounded-full pointer-events-none"></span>}
+        <span className="text-2xl select-none pointer-events-none" role="img" aria-label="robot">
           {isOpen ? "✕" : "🤖"}
         </span>
       </button>
