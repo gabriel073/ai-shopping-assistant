@@ -2,8 +2,19 @@
 html{
   background-color: rgba(231, 150, 10, 0.47);
 }
+/* Fix cursor en botón flotante */
+.float-btn {
+  cursor: pointer !important;
+}
 
+.float-btn * {
+  cursor: pointer !important;
+  pointer-events: none;
+  user-select: none;
+}
 .pulse-ring {
+  pointer-events: none;
+  cursor: pointer !important;
   animation: pulse-ring 2s ease-out infinite;
   background-color: rgb(245 158 11 / 0.5);
 }
