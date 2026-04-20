@@ -7,7 +7,7 @@ export default function MessageBubble({ role, content }) {
       {/* Avatar del bot */}
       {!isUser && (
         <div className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-zinc-900 text-[9px] font-bold shrink-0 mb-0.5">
-          AI
+          IA
         </div>
       )}
 

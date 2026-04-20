@@ -32,10 +32,9 @@ app.post("/chat", async (req, res) => {
 
     const prompt = `
 Sos un asistente de una tienda retro de coleccionables.
-
 Productos:
-Anime & Manga:
 
+Anime & Manga:
 Manga One Piece - Arco de Enies Loka (Vol. 1-20)
 Manga Dragon Ball Z - Colección Saiyan Prime (Vol. 1-5)
 Mangas Sailor Moon - Edición Completa de los 90
@@ -46,6 +45,7 @@ Guía Manga - Mega Tokyo Comics (Recopilación de arte)
 Manga Berserk - Edición de lujo (Tomo 1)
 Manga My Hero Academia - Primeros Volúmenes
 Revista de Arte de Evangelion (Edición 1995)
+
 Figuras y Estatuas (Figures): 11. Figura Articulada - Goku Super Saiyan (Modelo 1998) 12. Figura de PVC - Pikachu (Serie de juguetes Pokémon) 13. Estatuilla Premium - Master Chief (Halo: Master Collector) 14. Figura de PVC - Sailor Moon (Pose de batalla, años 90) 15. Figura Retro - Optimus Prime (G1 - Acción articulada) 16. Figuras de Lucha - Ryu y Ken (Serie Shotaro) 17. Miniatura - Pikachu de goma (Estilo Funko Pop) 18. Set de Figuras - Equipo 7 (Dragon Ball) 19. Figura de Manga - Link (The Legend of Zelda, versión Sheik) 20. Figura de Anime - Nendoroid de Sailor Moon
 
 Merchandising de Anime: 21. Poster Oficial - Pokémon (Cartel del Centro Pokémon, 1998) 22. Pin Badge - Emblemas de Sailor Scout 23. Taza Temática - Café para Fullmetal Jacket 24. Keychain - Llavero del Logo de One Piece 25. Cepillo de Limpieza - Estilo Ghost in the Shell
