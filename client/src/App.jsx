@@ -59,13 +59,13 @@ function App() {
         </div>
       )}
 
-    // App.jsx — botón flotante
+  
 <button
   onClick={() => setIsOpen(!isOpen)}
   aria-label={isOpen ? "Cerrar chat" : "Abrir chat"}
   className="relative w-14 h-14 rounded-full bg-amber-500 hover:bg-amber-400 active:scale-95 flex items-center justify-center shadow-lg shadow-amber-500/30 transition-all duration-200 cursor-pointer"
 >
-  {/* ✅ pointer-events-none para que no intercepte el mouse */}
+ 
   {!isOpen && <span className="pulse-ring absolute inset-0 rounded-full pointer-events-none" />}
   <span className="select-none pointer-events-none" role="img" aria-label="robot">
     {isOpen ? "✕" : "🤖"}
