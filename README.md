@@ -2,7 +2,7 @@
 
 Asistente de ventas con inteligencia artificial para una tienda retro de coleccionables. El bot responde preguntas sobre productos, recomienda artículos y mantiene el historial de conversación, todo con una UI flotante estilo retro-futurista.
 
-Link demo:[(https://shopping-assistant-ai.vercel.app/) AI Shopping Assistant]
+Link demo:(https://shopping-assistant-ai.vercel.app/)
 
 ---
 
