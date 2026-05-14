@@ -79,7 +79,7 @@ GEMINI_API_KEY=tu_api_key_de_google_ai_studio
 Iniciar el servidor:
 
 ```bash
-pnpm start
+pnpm run dev
 ```
 
 El backend queda disponible en `http://localhost:3001`
