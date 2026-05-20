@@ -88,9 +88,15 @@ Respuesta:
   res.json({ reply: result.text });
 
   } catch (error) {
-    console.error("ERROR GEMINI:", error);
+    console.error("ERROR GEMINI:", error.message);
     res.status(500).json({ reply: "Error con IA 😢" });
   }
 });
+
+const PORT = process.env.PORT || 3001;
+
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+}
 
 export default app;
